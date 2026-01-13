@@ -1,0 +1,21 @@
+class Play extends Phaser.Scene{
+    constructor(){
+        super('playScene')
+    }
+
+    create(){
+        //I think we could change the 640 and 480 to config heights for scaleablity
+        this.starfield = this.add.tileSprite(0,0,640,480,'starfield').setOrigin(0,0)
+        this.add.rectangle(0,borderUISize + bordePaddling, game.config.width, borderUISize *2 ,0x00ff00).setOrigin(0,0);
+        this.add.rectangle(0,0,game.config.width, borderUISize,0xFFFFFF).setOrigin(0,0);
+        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0)
+        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0)
+        this.p1rocket = new Rocket(this,game.config.width/2,game.config.height-borderUISize-bordePaddling,"rocket").setOrigin(0.5,0)
+    }
+
+    update()
+    {
+        this.starfield.tilePositionX -= 4;
+    }
+}
